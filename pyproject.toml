@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "maslib"
+version = "0.1.0"
+description = "This is the config file for the multiagent framework called maslib"
+authors = ["Haripreeth Dwarakanath Avarur, Sathvika Koppalli, Srishti"]
+
+package-mode = true
+packages = [
+    {include = "maslib"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^2.10.2"
+litellm = "^1.55.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
