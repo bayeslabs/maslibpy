@@ -1,5 +1,4 @@
 ENV_VARS = {
-    
     "together": 
         {
             "prompt": "Provide you TOGETHER_API_KEY in the environment varibales",
