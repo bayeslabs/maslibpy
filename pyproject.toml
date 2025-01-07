@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "mas_sathvika"
+name = "maslib"
 version = "0.1.0"
-description = "Your project description"
-authors = ["Your Name <you@example.com>"]
+description = "Multiagent Framework"
+authors = ["contact@bayeslabs.co"]
 readme = "README.md"
 
 package-mode = true
