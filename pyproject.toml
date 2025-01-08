@@ -2,7 +2,7 @@
 name = "maslib"
 version = "0.1.0"
 description = "Multi Agent Framework"
-authors = ["Haripreeth Avarur, BayesLabs"]
+authors = ["BayesLabs"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
