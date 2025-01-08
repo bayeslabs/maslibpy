@@ -67,4 +67,4 @@ class LLM():
             return res.content.choices[0]["message"]["content"]
         except Exception as e:
             logging.error(f"Error invoking the model: {e}")
-            raise
+            raise e
