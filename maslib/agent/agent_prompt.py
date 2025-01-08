@@ -3,7 +3,6 @@ Answer the following questions as best you can. You have access to the following
 
 {agents}
 
-
 Use the following format:
 
 Question: the input question you must answer

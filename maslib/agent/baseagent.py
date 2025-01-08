@@ -10,5 +10,4 @@ class BaseAgent(BaseModel):
     llm: LLM = None
     class Config:
         arbitrary_types_allowed = True
- 
- 
+        arbitrary_types_allowed = True
