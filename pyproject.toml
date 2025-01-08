@@ -4,10 +4,12 @@ version = "0.1.0"
 description = "Multiagent Framework"
 authors = ["contact@bayeslabs.co"]
 readme = "README.md"
+
 package-mode = true
 packages = [
     { include = "maslib" }
 ]
+
 [tool.poetry.dependencies]
 python = "^3.10"
 pydantic = "^2.10.4"
