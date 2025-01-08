@@ -26,6 +26,7 @@ class Crew:
         
         UserMessage(content=query)
         res=completion(model=self.llm.model_name,messages=BaseMessage.messages,stream=False)
+        return res.content.choices[0]["message"]["content"]
         # full_res=""
         # for chunk in res:
         #     try:
@@ -33,7 +34,5 @@ class Crew:
         #             full_res+=chunk.choices[0].text
         #     except:
         #         continue
-        ai_msg=AIMessage(content=res)
-        return ai_msg
     def __repr__(self):
         return f"Crew(agents:{self.crew})"
