@@ -29,11 +29,6 @@ class Crew:
         for chunk in res:
             if chunk.choices[0].text:
                 full_res+=chunk.choices[0].text
-            try:
-                if chunk.choices[0].text:
-                    full_res+=chunk.choices[0].text
-            except:
-                continue
         ai_msg=AIMessage(content=full_res)
         return ai_msg
     def __repr__(self):
