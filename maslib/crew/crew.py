@@ -5,7 +5,6 @@ from maslib.messages.assistant import AIMessage
 from maslib.agent.agent_prompt import prompt_template
 from litellm import completion
 from maslib.agent.agent import Agent
-# from maslib.llm.llm import LLM
 import random
 class Crew:
     def __init__(self,agents:list[Agent],llm=None,max_iterations=3,system_prompt=None):
@@ -25,15 +24,18 @@ class Crew:
     def invoke(self,query):
         
         UserMessage(content=query)
-        res=completion(model=self.llm.model_name,messages=BaseMessage.messages,stream=False)
-        # full_res=""
-        # for chunk in res:
-        #     try:
-        #         if chunk.choices[0].text:
-        #             full_res+=chunk.choices[0].text
-        #     except:
-        #         continue
-        ai_msg=AIMessage(content=res)
+        res=completion(model=self.llm.model_name,messages=BaseMessage.messages,stream=True)
+        full_res=""
+        for chunk in res:
+            if chunk.choices[0].text:
+                full_res+=chunk.choices[0].text
+            try:
+                if chunk.choices[0].text:
+                    full_res+=chunk.choices[0].text
+            except:
+                continue
+        ai_msg=AIMessage(content=full_res)
         return ai_msg
     def __repr__(self):
+
         return f"Crew(agents:{self.crew})"
