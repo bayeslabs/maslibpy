@@ -1,23 +1,16 @@
 [tool.poetry]
-name = "mas_sathvika"
+name = "maslib"
 version = "0.1.0"
-description = "Your project description"
-authors = ["Your Name <you@example.com>"]
+description = "multi agent framework"
+authors = ["BayesLabs"]
 readme = "README.md"
 
-package-mode = true
-packages = [
-    { include = "maslib" }
-]
-
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10"
+litellm = "^1.57.2"
 ipykernel = "^6.29.5"
-pydantic = "^2.10.1"
-litellm = "^1.53.1"
-together = "^1.3.5"
-ipython = "^8.31.0"
-python-dotenv = "^1.0.1"
+pydantic = "^2.10.4"
+
 
 [build-system]
 requires = ["poetry-core"]
