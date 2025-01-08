@@ -13,6 +13,3 @@ class Agent(BaseAgent):
         
         response = self.llm.invoke(BaseMessage.messages)
         return response
-
-
-

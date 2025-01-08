@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "maslib"
 version = "0.1.0"
-description = "Multi Agent Framework"
-authors = ["BayesLabs"]
+description = "Multiagent Framework"
+authors = ["contact@bayeslabs.co"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -10,7 +10,6 @@ python = "^3.10"
 pydantic = "^2.10.4"
 litellm = "^1.57.2"
 ipykernel = "^6.29.5"
-
 
 [build-system]
 requires = ["poetry-core"]

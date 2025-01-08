@@ -8,7 +8,6 @@ from maslib.messages.assistant import AIMessage
 from maslib.llm.constants import MODELS,PROVIDERS,ENV_VARS
 logging.basicConfig(level=logging.INFO)
 litellm.set_verbose=True
-
 class LLM():
     def __init__(
             self, 
@@ -70,4 +69,4 @@ class LLM():
             return ai_msg
         except Exception as e:
             logging.error(f"Error invoking the model: {e}")
-            raise
+            raise e
