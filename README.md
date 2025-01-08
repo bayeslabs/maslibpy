@@ -141,5 +141,5 @@ Contributions are welcome! Please follow these steps:
 
 ## Contact 
 
-For questions or support, please reach out to the repository maintainers: contact@bayeslabs.co
+- For questions or support, please reach out to the repository maintainers: contact@bayeslabs.co
 =======
