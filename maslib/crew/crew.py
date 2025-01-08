@@ -25,16 +25,15 @@ class Crew:
     def invoke(self,query):
         
         UserMessage(content=query)
-        res=completion(model=self.llm.model_name,messages=BaseMessage.messages,stream=True)
-        full_res=""
-        for chunk in res:
-            try:
-                if chunk.choices[0].text:
-                    full_res+=chunk.choices[0].text
-            except:
-                continue
-            
-        ai_msg=AIMessage(content=full_res)
+        res=completion(model=self.llm.model_name,messages=BaseMessage.messages,stream=False)
+        # full_res=""
+        # for chunk in res:
+        #     try:
+        #         if chunk.choices[0].text:
+        #             full_res+=chunk.choices[0].text
+        #     except:
+        #         continue
+        ai_msg=AIMessage(content=res)
         return ai_msg
     def __repr__(self):
         return f"Crew(agents:{self.crew})"
