@@ -62,7 +62,7 @@ class LLM():
             logging.error("Input must be a string or a list of dictionaries for messages.")
             raise ValueError("Input must be a string or a list of dictionaries for messages.")
         try:
-            print("current model  supports function calling:",litellm.supports_function_calling(model=self.model_name))
+            
             response = completion(model=self.model_name, messages=formatted_messages,stream=False)
             res= response["choices"][0]["message"]["content"]
             ai_msg=AIMessage(content=res)
