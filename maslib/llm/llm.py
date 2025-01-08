@@ -69,4 +69,4 @@ class LLM():
             return ai_msg
         except Exception as e:
             logging.error(f"Error invoking the model: {e}")
-            raise
+            raise e
