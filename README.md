@@ -1,2 +1,1 @@
-# maslib
-A multi agent building framework 
+Multi Agent Framework

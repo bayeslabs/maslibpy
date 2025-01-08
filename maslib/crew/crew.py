@@ -5,7 +5,6 @@ from maslib.messages.assistant import AIMessage
 from maslib.agent.agent_prompt import prompt_template
 from litellm import completion
 from maslib.agent.agent import Agent
-
 import random
 class Crew:
     """
@@ -56,17 +55,8 @@ class Crew:
         3. Aggregates the response chunks and logs the result as an `AIMessage`.
         """
         UserMessage(content=query)
-        res=completion(model=self.llm.model_name,messages=BaseMessage.messages,stream=True)
-        full_res=""
-        for chunk in res:
-            # print(chunk)
-            
-            if chunk.choices[0].text:
-                full_res+=chunk.choices[0].text
-        
-            
-        ai_msg=AIMessage(content=full_res)
-        return ai_msg
+        res=completion(model=self.llm.model_name,messages=BaseMessage.messages,stream=False)
+        return res.content.choices[0]["message"]["content"]
     def __repr__(self):
         """
         Returns a string representation of the Crew instance.
