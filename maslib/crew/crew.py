@@ -56,7 +56,7 @@ class Crew:
         """
         UserMessage(content=query)
         res=completion(model=self.llm.model_name,messages=BaseMessage.messages,stream=False)
-        return res.content.choices[0]["message"]["content"]
+        return res.choices[0]["message"]["content"]
     def __repr__(self):
         """
         Returns a string representation of the Crew instance.
