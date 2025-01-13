@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/maslib
+      url: https://pypi.org/p/pymas
     permissions:
       id-token: write
     steps:
