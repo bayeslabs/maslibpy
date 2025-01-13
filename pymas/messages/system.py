@@ -1,4 +1,4 @@
-from maslib.messages.base import BaseMessage
+from pymas.messages.base import BaseMessage
 
 class SystemMessage(BaseMessage):
     VALID_ROLES = ["system"]
