@@ -1,10 +1,10 @@
-from maslib.messages.system import SystemMessage
-from maslib.messages.base import BaseMessage
-from maslib.messages.user import UserMessage
-from maslib.messages.assistant import AIMessage
-from maslib.agent.agent_prompt import prompt_template
+from pymas.messages.system import SystemMessage
+from pymas.messages.base import BaseMessage
+from pymas.messages.user import UserMessage
+from pymas.messages.assistant import AIMessage
+from pymas.agent.agent_prompt import prompt_template
 from litellm import completion
-from maslib.agent.agent import Agent
+from pymas.agent.agent import Agent
 import random
 class Crew:
     """

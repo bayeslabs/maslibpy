@@ -3,9 +3,9 @@ import logging
 import litellm
 from typing import  List, Dict, Union
 from litellm import completion
-from maslib.messages.user import UserMessage
-from maslib.messages.assistant import AIMessage
-from maslib.llm.constants import MODELS,PROVIDERS,ENV_VARS
+from pymas.messages.user import UserMessage
+from pymas.messages.assistant import AIMessage
+from pymas.llm.constants import MODELS,PROVIDERS,ENV_VARS
 logging.basicConfig(level=logging.INFO)
 litellm.set_verbose=True
 class LLM():

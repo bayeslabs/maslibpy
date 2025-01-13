@@ -1,7 +1,7 @@
-from maslib.agent.baseagent import BaseAgent
-from maslib.messages.user import UserMessage
-from maslib.messages.system import SystemMessage
-from maslib.messages.base import BaseMessage
+from pymas.agent.baseagent import BaseAgent
+from pymas.messages.user import UserMessage
+from pymas.messages.system import SystemMessage
+from pymas.messages.base import BaseMessage
 
 class Agent(BaseAgent):
     def __init__(self, **kwargs):

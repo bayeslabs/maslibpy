@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from uuid import uuid4
-from maslib.llm.llm import LLM
+from pymas.llm.llm import LLM
 class BaseAgent(BaseModel):
     id:str=str(uuid4())
     name:str=""
