@@ -1,5 +1,5 @@
 
-# Multi-Agent System Library (pymas)
+# PyMAS: Multi-Agent System Library
 
 **pymas** is a lightweight, modular Python library designed to facilitate the creation and management of multi-agent systems. It provides a structured framework for building agents, defining their communication protocols, and integrating them with various Large Language Models (LLMs).
 
