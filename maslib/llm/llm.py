@@ -104,7 +104,7 @@ class LLM():
         try:
             response = completion(model=self.model_name, messages=formatted_messages,stream=False)
             res= response["choices"][0]["message"]["content"]
-            return res.content.choices[0]["message"]["content"]
+            return res
         except Exception as e:
             logging.error(f"Error invoking the model: {e}")
             raise e
