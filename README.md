@@ -1,7 +1,6 @@
+# MASLibPy: Multi-Agent System Library
 
-# PyMAS: Multi-Agent System Library
-
-**pymas** is a lightweight, modular Python library designed to facilitate the creation and management of multi-agent systems. It provides a structured framework for building agents, defining their communication protocols, and integrating them with various Large Language Models (LLMs).
+**maslibpy** is a lightweight, modular Python library designed to facilitate the creation and management of multi-agent systems. It provides a structured framework for building agents, defining their communication protocols, and integrating them with various Large Language Models (LLMs).
 
 ## Features
 - Modular design for agent creation and management.
@@ -14,8 +13,8 @@
 
 ## Installation 
 ```bash
-git clone https://github.com/bayeslabs/pymas.git
-cd pymas
+git clone https://github.com/bayeslabs/maslibpy.git
+cd maslibpy
 ```
 ```bash
 pip install poetry
@@ -25,7 +24,7 @@ poetry install
 
 ## Directory Structure
 ``` bash
-pymas/
+maslibpy/
 ├── agent/
 │   ├── baseagent.py
 │   ├── agent.py
@@ -69,9 +68,9 @@ pymas/
 ## Example Usage 
 
 ```bash
-from pymas.agent.agent import Agent
-from pymas.crew.crew import Crew
-from pymas.llm.llm import LLM
+from maslibpy.agent.agent import Agent
+from maslibpy.crew.crew import Crew
+from maslibpy.llm.llm import LLM
 
 symptom_collector_agent=Agent(
     name="Symptom Collector Agent",
@@ -126,7 +125,7 @@ Ensure the appropriate API keys are set in your environment variables:
 - REPLICATE_API_KEY
 
 Supported LLM Providers and Models:
-- Refer to pymas/llm/constants.py for the list of supported providers and models.
+- Refer to maslibpy/llm/constants.py for the list of supported providers and models.
 
 ---
 
