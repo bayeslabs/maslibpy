@@ -1,4 +1,4 @@
-from pymas.agent.baseagent import BaseAgent
+from .baseagent import BaseAgent
 from pymas.messages.user import UserMessage
 from pymas.messages.system import SystemMessage
 from pymas.messages.base import BaseMessage

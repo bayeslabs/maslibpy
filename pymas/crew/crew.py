@@ -1,7 +1,6 @@
 from pymas.messages.system import SystemMessage
 from pymas.messages.base import BaseMessage
 from pymas.messages.user import UserMessage
-from pymas.messages.assistant import AIMessage
 from pymas.agent.agent_prompt import prompt_template
 from litellm import completion
 from pymas.agent.agent import Agent
