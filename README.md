@@ -34,8 +34,8 @@ maslibpy/
 │   ├── system.py
 │   ├── user.py
 │   └── assistant.py
-├── crew/
-│   └── crew.py
+├── pattern/
+│   └── sequential.py
 ├── llm/
 │   ├── llm.py
 │   └── constants.py
@@ -56,8 +56,8 @@ maslibpy/
 - user.py: Implements the UserMessage class for user-initiated communication.
 - assistant.py: Implements the AIMessage class for assistant responses.
 
-### Crew: 
-- crew.py: Implements the Crew class, which manages a group of agents and orchestrates their collaborative tasks using an LLM backend.
+### Pattern: 
+- sequential.py: Implements the Crew class, which manages a group of agents and orchestrates their collaborative tasks using an LLM backend in a sequantial manner.
 
 ### LLM:
 - llm.py: Manages LLM integration, including provider validation, model invocation, and environment variable checks for API keys.
@@ -66,6 +66,8 @@ maslibpy/
 ---
 
 ## Example Usage 
+
+Note: pattern/sequential.py was previsously crew/crew.py
 
 ```bash
 from maslibpy.agent.agent import Agent
