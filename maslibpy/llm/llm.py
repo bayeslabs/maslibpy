@@ -3,6 +3,7 @@ import logging
 from typing import  List, Dict, Union
 from litellm import completion
 from maslibpy.messages.user import UserMessage
+from maslibpy.messages.assistant import AIMessage
 from maslibpy.llm.constants import MODELS,PROVIDERS,ENV_VARS
 logging.basicConfig(level=logging.INFO)
 os.environ['LITELLM_LOG'] = 'DEBUG'
@@ -93,7 +94,7 @@ class LLM():
         """
         if isinstance(messages, str):
             human_msg=UserMessage(role="user",content=messages)
-            formatted_messages=human_msg.messages
+            formatted_messages= [{"role": human_msg.role, "content": human_msg.content}]
         elif isinstance(messages, list) and all(isinstance(msg, dict) for msg in messages):
             formatted_messages = messages
         else:
@@ -102,6 +103,7 @@ class LLM():
         try:
             response = completion(model=self.model_name, messages=formatted_messages,stream=False)
             res= response["choices"][0]["message"]["content"]
+            AIMessage(content=res)
             return res
         except Exception as e:
             logging.error(f"Error invoking the model: {e}")
