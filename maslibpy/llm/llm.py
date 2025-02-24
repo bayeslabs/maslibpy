@@ -3,6 +3,8 @@ import logging
 from typing import  List, Dict, Union
 from litellm import completion
 from maslibpy.messages.user import UserMessage
+from litellm import supports_response_schema
+from litellm import supports_parallel_function_calling
 from maslibpy.llm.constants import MODELS,PROVIDERS,ENV_VARS
 logging.basicConfig(level=logging.INFO)
 os.environ['LITELLM_LOG'] = 'DEBUG'
