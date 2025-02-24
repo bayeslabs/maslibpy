@@ -3,9 +3,6 @@ import logging
 from typing import  List, Dict, Union
 from litellm import completion
 from maslibpy.messages.user import UserMessage
-from litellm import supports_response_schema
-from litellm import supports_parallel_function_calling
-# from litellm.utils import trim_messages
 from maslibpy.llm.constants import MODELS,PROVIDERS,ENV_VARS
 logging.basicConfig(level=logging.INFO)
 os.environ['LITELLM_LOG'] = 'DEBUG'
@@ -107,17 +104,9 @@ class LLM():
             logging.error("Input must be a string or a list of dictionaries for messages.")
             raise ValueError("Input must be a string or a list of dictionaries for messages.")
         try:
-            
-            if self.supports_response_schema and response_format:
-                response = completion(model=self.model_name, messages=formatted_messages,stream=False,response_format=response_format,tools=tools,tool_choice="auto")
-            if self.supports_parallel_function_calling:
-                if tools:
-                    response = completion(model=self.model_name, messages=formatted_messages,stream=False,tools=tools)
-                else:
-                    response = completion(model=self.model_name, messages=formatted_messages,stream=False)
-            else:
-                response = completion(model=self.model_name, messages=formatted_messages,stream=False)
-            return response
+            response = completion(model=self.model_name, messages=formatted_messages,stream=False)
+            res= response["choices"][0]["message"]["content"]
+            return res
         except Exception as e:
             logging.error(f"Error invoking the model: {e}")
             raise e
