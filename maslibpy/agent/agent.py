@@ -39,7 +39,7 @@ class Agent(BaseAgent):
         return generated_response
 
 agent = Agent(
-    name="TestAgent",
+    name="TestAgent-1",
     role="AI Assistant",
     goal="Assist users effectively",
     backstory="An advanced AI designed to provide helpful insights.",
