@@ -2,12 +2,11 @@ from pydantic import BaseModel, Field, model_validator
 from typing import ClassVar
 
 class CoT(BaseModel):
-    available_patterns: ClassVar[list] = ['cot','reflection']
-    # available_patterns: ClassVar[list] = ['cot', 'one_shot']
+   
+    available_patterns: ClassVar[list] = ['cot', 'one_shot']
     
     cot: bool = Field(default=False, description="Default cot prompt")
-    reflection: bool = Field(default=False, description="Flag to use reflection")
-    # one_shot: bool = Field(default=False, description="Cot prompt with single example")
+    one_shot: bool = Field(default=False, description="Cot prompt with single example")
     
     @model_validator(mode="before")
     @classmethod
@@ -73,16 +72,7 @@ class CoT(BaseModel):
 
     def fetch_prompt(self):
         """Returns the correct prompt based on the selected flag."""
-        if self.reflection:
-            return self.get_reflection_prompt()
-        # elif self.cot:
+        if self.one_shot:
+            return self.get_cot_oneshot_prompt()
         self.cot=True
         return self.get_cot_prompt()
-        # else:
-        #     raise Exception("Invalid Pattern Passed ,Available patterns are",self.available_patterns)
-
-
-        # if self.one_shot:
-        #     return self.get_cot_oneshot_prompt()
-        # self.cot=True
-        # return self.get_cot_prompt()
