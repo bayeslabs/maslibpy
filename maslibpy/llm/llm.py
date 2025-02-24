@@ -3,7 +3,6 @@ import logging
 from typing import  List, Dict, Union
 from litellm import completion
 from maslibpy.messages.user import UserMessage
-from maslibpy.messages.assistant import AIMessage
 from maslibpy.llm.constants import MODELS,PROVIDERS,ENV_VARS
 logging.basicConfig(level=logging.INFO)
 os.environ['LITELLM_LOG'] = 'DEBUG'
@@ -37,7 +36,11 @@ class LLM():
         self.model_name = model_name
         self.api_key = None
         self.validate_provider()
-
+        self.supports_response_schema=supports_response_schema(model=self.model_name,custom_llm_provider=self.provider)
+        try:
+            self.supports_parallel_function_calling=supports_parallel_function_calling(model=self.model_name)
+        except Exception:
+            self.supports_parallel_function_calling=False
     def validate_provider(self):
         """
         Validate the provider and model configuration.
@@ -73,7 +76,7 @@ class LLM():
         self.api_key = os.environ.get(env_key)
         logging.info(f"API key validated for provider {self.provider}")
 
-    def invoke(self, messages: Union[str, List[Dict[str, str]]]) -> str:
+    def invoke(self, messages: Union[str, List[Dict[str, str]]],response_format="",tools=[]) -> str:
         """
         Invoke the LLM with the provided messages to generate a response.
 
@@ -103,7 +106,6 @@ class LLM():
         try:
             response = completion(model=self.model_name, messages=formatted_messages,stream=False)
             res= response["choices"][0]["message"]["content"]
-            AIMessage(content=res)
             return res
         except Exception as e:
             logging.error(f"Error invoking the model: {e}")
