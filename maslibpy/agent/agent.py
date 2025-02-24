@@ -39,16 +39,16 @@ class Agent(BaseAgent):
         return generated_response
 
 agent = Agent(
-    name="TestAgent",
+    name="TestAgent-1",
     role="AI Assistant",
     goal="Assist users effectively",
     backstory="An advanced AI designed to provide helpful insights.",
     prompt_type="react",
-    prompt_pattern="react"
+    prompt_pattern="react",
     max_iterations=3,
     critique_llm=LLM(provider="together", model_name="together_ai/meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"),
     generator_llm=LLM(provider="together", model_name="together_ai/mistralai/Mistral-7B-Instruct-v0.1"),
     score_type="prompt_based"
-) 
+)
 
 agent.invoke([{"role":"user","content":"what are AI Agents"}])
