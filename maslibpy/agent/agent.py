@@ -10,6 +10,10 @@ from maslibpy.agent.baseagent import BaseAgent
 class Agent(BaseAgent):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        if self.generator_llm is None:
+            self.llm=LLM()
+        if self.critique_llm is None:
+            self.critique_llm=LLM()
         self.messages.append(
             SystemMessage(
                 content=f"You are a {self.name} agent with your task as {self.role}. "
@@ -48,7 +52,7 @@ if __name__=="__main__":
         max_iterations=3,
         critique_llm=LLM(provider="together", model_name="together_ai/meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"),
         generator_llm=LLM(provider="together", model_name="together_ai/mistralai/Mistral-7B-Instruct-v0.1"),
-        score_type="mathematical"
+        # score_type="mathematical"
     )
 
     print(agent.invoke([{"role":"user","content":"what are AI Agents"}]))
