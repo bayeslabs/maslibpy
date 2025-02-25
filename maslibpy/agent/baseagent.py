@@ -10,8 +10,8 @@ class BaseAgent(BaseModel):
     role: str = ""
     goal: str = ""
     backstory: str = ""
-    generator_llm:Optional[LLM]=LLM()
-    critique_llm:Optional[LLM]=LLM()
+    generator_llm:Optional[LLM]=None
+    critique_llm:Optional[LLM]=None
     system_prompt: Optional[str] = None
     prompt_type: Literal["cot", "react"] = Field(default="react")
     prompt_pattern: Optional[str] = None
