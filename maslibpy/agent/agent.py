@@ -11,7 +11,7 @@ class Agent(BaseAgent):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         if self.generator_llm is None:
-            self.llm=LLM()
+            self.generator_llm=LLM()
         if self.critique_llm is None:
             self.critique_llm=LLM()
         self.messages.append(
