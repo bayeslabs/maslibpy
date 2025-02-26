@@ -6,7 +6,6 @@ from maslibpy.prompts.react.react_prompts import ReAct
 from maslibpy.prompts.cot.cot_prompts import CoT
 from maslibpy.agent.baseagent import BaseAgent
 
-
 class Agent(BaseAgent):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -26,12 +25,12 @@ class Agent(BaseAgent):
             self.prompt_pattern=kwargs.get("prompt_pattern","cot")
             cot_instance=CoT(**{self.prompt_pattern: True})
             self.system_prompt = cot_instance.fetch_prompt()
-            print("cot instane",cot_instance)   
+              
         else:
             self.prompt_pattern=kwargs.get("prompt_pattern","react")
             react_instance = ReAct(**{self.prompt_pattern: True})
             self.system_prompt = react_instance.fetch_prompt()
-            print("react instane",react_instance)
+            
     
     def invoke(self, query: Union[str, List[Dict[str, str]]]):
         """Default Scoring function is prompt based"""
@@ -41,18 +40,3 @@ class Agent(BaseAgent):
         else:
             generated_response=Scorer().prompt_based(agent=self,query=query)
         return generated_response
-if __name__=="__main__":
-    agent = Agent(
-        name="TestAgent-1",
-        role="AI Assistant",
-        goal="Assist users effectively",
-        backstory="An advanced AI designed to provide helpful insights.",
-        prompt_type="react",
-        prompt_pattern="react",
-        max_iterations=3,
-        critique_llm=LLM(provider="together", model_name="together_ai/meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"),
-        generator_llm=LLM(provider="together", model_name="together_ai/mistralai/Mistral-7B-Instruct-v0.1"),
-        # score_type="mathematical"
-    )
-
-    print(agent.invoke([{"role":"user","content":"what are AI Agents"}]))
