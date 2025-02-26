@@ -31,7 +31,8 @@ poetry install
 ``` bash
 maslibpy/
 ├── assets/
-│   └── reasoning_workflow.png
+│   ├── reasoning_workflow.png
+│   └── MathematicalReasoning_Experimentations.pdf
 ├── prompts/
 │   ├── cot/
 │   │   └── cot_prompts.py
