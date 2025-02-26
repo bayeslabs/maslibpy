@@ -36,9 +36,6 @@ Backpropagation is a technique used in neural networks to adjust the weights of 
 
 Backpropagation is a technique used in neural networks to adjust the weights of the connections between neurons in order to minimize the error between the predicted output and the actual output. It works by propagating the error backwards through the network, adjusting the weights at each layer based on the gradient of the error with respect to the weights. This process is typically performed using an optimization algorithm such as stochastic gradient descent (SGD) or Adam, which minimizes the loss function (e.g., mean squared error or cross-entropy). Regularization techniques, such as L1 or L2 regularization, are also used to prevent overfitting. The goal of backpropagation is to enable the neural network to learn from its mistakes and improve its performance over time.
 
-            Return exactly 'True' if all criteria are met, or exactly 'False' if any criterion fails.
-            Do not include any reasoning, explanations, or additional characters - your entire output must be either the word 'True' or the word 'False'
-
 ---
 
 ## 4. Critique- Meta-Llama-3.1-405B-Instruct-turbo & Generator- Mistral-7B-Instruct-v0.1
