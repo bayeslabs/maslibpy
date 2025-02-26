@@ -41,14 +41,7 @@ class PromptBased():
                 res += f"\n\n**Error occurred {e} in iteration {i+1}**\n\n"
                 raise e
                 break
-        os.makedirs("prompt_results",exist_ok=True)
-        save_path=f"prompt_results/{agent.prompt_type}_{agent.prompt_pattern}_G_{agent.generator_llm.model_name.split("/")[-1]}_C_{agent.critique_llm.model_name.split("/")[-1]}_{agent.session_id.split("-")[0]}_.txt"
-        end_time=round(time.time()-start_time,2)
-        res+=f"\n\n**Final Output**:\n\n{generated_response}"
-        res+=f"\n\nResponse Time:{end_time} seconds"
-        with open(f"{save_path}","w")as f:
-            f.write(res)
-        print(f"result saved to : {save_path}")
+        
         return generated_response
         
     def update_chat_history(self,agent,query:Union[str, List[Dict[str, str]]]):
