@@ -11,13 +11,11 @@ class PromptBased():
     
     def invoke(self,agent,query: Union[str, List[Dict[str, str]]]) -> str:
         actual_query = query
-        res=""
-        start_time=time.time()
+        
         for i in tqdm(range(agent.max_iterations),desc="Iterations"):
             try:
                 generated_response = self.generate(agent,agent.generator_llm,actual_query)
-                res += f"===== Epoch {i+1} =====\n\n"
-                res += f"**Generated Response**:\n\n{generated_response}\n\n"
+                
                 if generated_response is not None:
                     ind=generated_response.rfind("Final Answer")
                     if ind>=0:
@@ -28,19 +26,16 @@ class PromptBased():
                 
                 critiqued_response = self.critique(agent,agent.critique_llm,generated_response,original_query=query)
                 
-                res += f"\n\n**Critiqued Response**:\n\n{critiqued_response}\n\n"
+                
                 grade_output=self.grade(agent,agent.critique_llm,query,generated_response,critiqued_response)
-                res+=f"\n\n**Grade node output**\n\n{grade_output}"
+                
                 if grade_output:
                     print("breaking the loop")
                     break
-                os.makedirs("results",exist_ok=True)  
-                res += "=" * 100 + "\n\n"
-            except Exception as e:
                 
-                res += f"\n\n**Error occurred {e} in iteration {i+1}**\n\n"
+            except Exception as e:
                 raise e
-                break
+                
         
         return generated_response
         

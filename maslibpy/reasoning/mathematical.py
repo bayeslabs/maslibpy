@@ -119,20 +119,18 @@ class Mathematical():
         """Evaluate and refine model responses based on entropy and coherence."""
         best_score, best_response = float('-inf'), None
         plateau_count = 0
-        res=""
-        start_time=time.time()
+        
         for i in tqdm(range(agent.max_iterations), desc="Iterations"):
             
             initial_response = self.generate(agent,agent.generator_llm,query)
-            res+=f"Initial Response:\n{initial_response}\n\n"
+            
             critique_comments = self.critique(agent,agent.critique_llm,initial_response, query)
-            res+=f"Critique_comments:\n{critique_comments}\n\n"
+            
             revised_response = self.refine_response(agent,agent.generator_llm,initial_response, critique_comments)
-            res+=f"Revised Response:\n{critique_comments}\n\n"
+            
             metrics = self.calculate_metrics(revised_response)
             current_score = self._calculate_composite_score(agent,metrics)
-            res+=f"Metrics:\n\n{metrics}\n\n"
-            res+=f"Score:\n\n{current_score}\n\n"
+            
             logger.info(f"Epoch {i+1} - Metrics: {metrics}")
 
             if current_score > best_score + agent.entropy_threshold:
@@ -161,11 +159,11 @@ class Mathematical():
                     user_msg=UserMessage(content=agent.system_prompt.format(query=query[-1]["content"]))
                     query[-1]=user_msg
                 agent.messages.extend(query)
-        # return agent.messages
+        
         
     def generate(self, agent,llm,query: Union[str, List[Dict[str, str]]]) -> str:
         """Generate response for a given query using the provided LLM"""
-        # agent.messages=self.update_chat_history(agent,query)
+        
         self.update_chat_history(agent,query)
         messages = [{"role": msg.role, "content": msg.content} for msg in agent.messages]
         res = llm.invoke(messages)
@@ -179,7 +177,7 @@ class Mathematical():
         # mathematical critique and prompt critique are two different
         """Generate critique comments for the response balancing completeness and conciseness."""
         if isinstance(original_query,UserMessage):
-            print("user msg")
+            
             original_query=original_query[-1].content
         elif isinstance(original_query, list) and all(isinstance(msg, dict) for msg in original_query):
             original_query=original_query[-1]["content"]
