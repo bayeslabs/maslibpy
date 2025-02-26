@@ -145,14 +145,7 @@ class Mathematical():
             if plateau_count >= agent.max_plateau_count:
                 logger.info("Stopping due to plateau.")
                 break
-        os.makedirs("mathematical_results",exist_ok=True)
-        save_path=f"mathematical_results/{agent.prompt_type}_{agent.prompt_pattern}_G_{agent.generator_llm.model_name.split("/")[-1]}_C_{agent.critique_llm.model_name.split("/")[-1]}_{agent.session_id.split("-")[0]}_.txt"
-        end_time=round(time.time()-start_time,2)
-        res+=f"\n\n**Final Output**:\n\n{best_response or revised_response}\n\n"
-        res+=f"\n\nResponse Time:{end_time} seconds"
-        with open(f"{save_path}","w")as f:
-            f.write(res)
-        print(f"result saved to : {save_path}")
+        
         return best_response or revised_response
 
 
